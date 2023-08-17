@@ -27,10 +27,11 @@ public class DynamicDataResource {
     @GetMapping
     public List<DynamicDataEntity> getDynamicData() {
         String csvFile = "C:\\Users\\Nathan\\Desktop\\TESTECSVPRODUCT.csv";
+        String csvFile2 = "C:\\Users\\Administrator\\Desktop\\client-data.csv";
         Map<Long, Map<String, String>> item = new HashMap<>();
         List<DynamicDataEntity> documents = new ArrayList<>();
 
-        try (Reader reader = new FileReader(csvFile);
+        try (Reader reader = new FileReader(csvFile2);
              CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim())) {
             for (CSVRecord csvRecord : csvParser) {
                 List<String> headersList = Arrays.asList(csvParser.getHeaderNames().get(0).split(";"));
